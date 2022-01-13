@@ -12,8 +12,12 @@ import {
   fetchMovieCredits,
   fetchMovieReviews,
 } from "../../services/movies-api";
+import Container from "../Container";
+import Button from "../Button";
+import MovieCard from "../MovieCard";
 import Cast from "../Cast/Cast";
 import Reviews from "../Reviews/Reviews";
+import { NavList, NavItem } from "./MovieDetailsPage.styles";
 
 function MovieDetailsPage() {
   const navigate = useNavigate();
@@ -38,37 +42,45 @@ function MovieDetailsPage() {
     navigate(location?.state?.from ?? "/");
   };
 
-  console.log(movie);
+  console.log(reviews);
 
   return (
-    <>
-      <button type="button" onClick={onClickBack}>
+    <Container>
+      <Button
+        type="button"
+        onClick={onClickBack}
+        style={{ margin: "25px 0 0 25px" }}
+      >
         Back
-      </button>
+      </Button>
 
-      {movie && (
-        <div>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt=""
-          />
-          <p>{movie.title ?? movie.name}</p>
-        </div>
-      )}
+      {movie && <MovieCard movie={movie} />}
 
-      <NavLink to="cast" state={{ from: location?.state?.from ?? "/" }}>
-        Cast
-      </NavLink>
-      <NavLink to="reviews" state={{ from: location?.state?.from ?? "/" }}>
-        Reviews
-      </NavLink>
+      <NavList>
+        <NavItem>
+          <NavLink to="cast" state={{ from: location?.state?.from ?? "/" }}>
+            Cast
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="reviews" state={{ from: location?.state?.from ?? "/" }}>
+            Reviews
+          </NavLink>
+        </NavItem>
+      </NavList>
 
       <Routes>
-        <Route path="cast" element={<Cast credits={credits} />} />
+        <Route
+          path="cast"
+          element={<Cast credits={credits} creditsPerPage={5} />}
+        />
 
-        <Route path="reviews" element={<Reviews reviews={reviews} />} />
+        <Route
+          path="reviews"
+          element={<Reviews reviews={reviews} creditsPerPage={3} />}
+        />
       </Routes>
-    </>
+    </Container>
   );
 }
 

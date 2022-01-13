@@ -1,19 +1,14 @@
 import styled from "styled-components";
 
-const HeaderStyled = styled.header`
+const NavList = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 80px;
-  width: 100vw;
-  background-image: linear-gradient(to bottom, #444c5c 93%, #78a5a3 7%);
+  border-bottom: 1px solid #78a5a3;
 `;
 
-const List = styled.ul`
-  display: flex;
-`;
-
-const Item = styled.li`
+const NavItem = styled.li`
   &:first-child {
     margin-right: 50px;
   }
@@ -38,4 +33,4 @@ const Item = styled.li`
   }
 `;
 
-export { HeaderStyled, List, Item };
+export { NavList, NavItem };

@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import styled from "styled-components";
 
@@ -10,12 +9,13 @@ function PaginatedItems({ totalPages, onPaginationBtn }) {
   return (
     <>
       <Paginate
+        onPageChange={handlePageClick}
+        pageCount={totalPages}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={2}
+        previousLabel="< previous"
         breakLabel="..."
         nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
-        pageCount={totalPages}
-        previousLabel="< previous"
         renderOnZeroPageCount={null}
       />
     </>

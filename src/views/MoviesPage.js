@@ -4,7 +4,7 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import MoviesList from "../components/MoviesList/MoviesList";
 import Loader from "../components/Loader";
 
-import PaginatedItems from "../components/pagination/Pagination";
+import PaginatedItems from "../components/Pagination/Pagination";
 
 function MoviesPage() {
   const [movies, setMovies] = useState([]);

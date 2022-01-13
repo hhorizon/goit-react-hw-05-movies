@@ -10,6 +10,12 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     list-style-type: none;
   }
+
+  body{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    background-color: #444c5ca1
+  }
 `;
 
 ReactDOM.render(

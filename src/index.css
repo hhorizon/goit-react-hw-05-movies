@@ -1,0 +1,7 @@
+span::after {
+  content: ", ";
+}
+
+span:not(:last-child) {
+  color: blue;
+}
