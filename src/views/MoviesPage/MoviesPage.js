@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as fetchApi from "../../services/fetchApi";
 import Container from "../../components/Container";
-import SearchBar from "../../components/SearchBar/SearchBar";
+import SearchBar from "../../components/SearchBar";
 import Loader from "../../components/Loader";
 import MoviesList from "../../components/MoviesList";
 import Pagination from "../../components/Pagination";
