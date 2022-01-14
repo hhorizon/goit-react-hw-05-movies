@@ -35,7 +35,7 @@ const NavItem = styled.li`
     background-color: #78a5a3;
   }
 
-  & .active > button {
+  & .active {
     background-color: #78a5a3;
   }
 `;
