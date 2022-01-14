@@ -7,16 +7,12 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import {
-  fetchMovieById,
-  fetchMovieCredits,
-  fetchMovieReviews,
-} from "../../services/movies-api";
-import Container from "../Container";
-import Button from "../Button";
-import MovieCard from "../MovieCard";
-import Cast from "../Cast/Cast";
-import Reviews from "../Reviews/Reviews";
+import * as fetchApi from "../../services/fetchApi";
+import Container from "../../components/Container";
+import Button from "../../components/Button";
+import MovieCard from "../../components/MovieCard";
+import Cast from "../../components/Cast";
+import Reviews from "../../components/Reviews";
 import { NavList, NavItem } from "./MovieDetailsPage.styles";
 
 function MovieDetailsPage() {
@@ -29,11 +25,11 @@ function MovieDetailsPage() {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetchMovieById(movieId).then(setMovie);
-    fetchMovieCredits(movieId).then((data) => {
+    fetchApi.movieById(movieId).then(setMovie);
+    fetchApi.movieCredits(movieId).then((data) => {
       setCredits(data.cast);
     });
-    fetchMovieReviews(movieId).then((data) => {
+    fetchApi.movieReviews(movieId).then((data) => {
       setReviews(data.results);
     });
   }, [movieId]);
@@ -42,8 +38,6 @@ function MovieDetailsPage() {
     navigate(location?.state?.from ?? "/");
   };
 
-  console.log(reviews);
-
   return (
     <Container>
       <Button
@@ -51,19 +45,31 @@ function MovieDetailsPage() {
         onClick={onClickBack}
         style={{ margin: "25px 0 0 25px" }}
       >
-        Back
+        Back {location?.state?.label ?? ""}
       </Button>
 
       {movie && <MovieCard movie={movie} />}
 
       <NavList>
         <NavItem>
-          <NavLink to="cast" state={{ from: location?.state?.from ?? "/" }}>
+          <NavLink
+            to="cast"
+            state={{
+              from: location?.state?.from ?? "/",
+              label: location?.state?.label ?? "",
+            }}
+          >
             Cast
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="reviews" state={{ from: location?.state?.from ?? "/" }}>
+          <NavLink
+            to="reviews"
+            state={{
+              from: location?.state?.from ?? "/",
+              label: location?.state?.label ?? "",
+            }}
+          >
             Reviews
           </NavLink>
         </NavItem>

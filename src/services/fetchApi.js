@@ -9,32 +9,24 @@ async function fetchMovies(url) {
     : Promise.reject(new Error("Sorry, something wrong"));
 }
 
-function fetchPopularMovies() {
+export function popularMovies() {
   return fetchMovies("trending/all/day?");
 }
 
-function fetchSearchMovies(searchQuery, currentPage) {
+export function searchMovies(searchQuery, currentPage) {
   return fetchMovies(
     `search/movie?query=${searchQuery}&page=${currentPage}&include_adult=false&`
   );
 }
 
-function fetchMovieById(movieId) {
+export function movieById(movieId) {
   return fetchMovies(`movie/${movieId}?language=en-US&`);
 }
 
-function fetchMovieCredits(movieId) {
+export function movieCredits(movieId) {
   return fetchMovies(`movie/${movieId}/credits?language=en-US&`);
 }
 
-function fetchMovieReviews(movieId) {
+export function movieReviews(movieId) {
   return fetchMovies(`movie/${movieId}/reviews?language=en-US&page=1&`);
 }
-
-export {
-  fetchPopularMovies,
-  fetchSearchMovies,
-  fetchMovieById,
-  fetchMovieCredits,
-  fetchMovieReviews,
-};

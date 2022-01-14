@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { fetchSearchMovies } from "../services/movies-api";
-import SearchBar from "../components/SearchBar/SearchBar";
-import MoviesList from "../components/MoviesList/MoviesList";
-import Loader from "../components/Loader";
+import * as fetchApi from "../../services/fetchApi";
+import Container from "../../components/Container";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import MoviesList from "../../components/MoviesList/MoviesList";
+import Loader from "../../components/Loader";
 
-import PaginatedItems from "../components/Pagination/Pagination";
+import PaginatedItems from "../../components/Pagination/Pagination";
 
 function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -26,7 +27,8 @@ function MoviesPage() {
 
     setIsloading(true);
 
-    fetchSearchMovies(searchQuery, currentPage)
+    fetchApi
+      .searchMovies(searchQuery, currentPage)
       .then((data) => {
         setMovies(data.results);
         setTotalPages(data.total_pages);
@@ -42,7 +44,7 @@ function MoviesPage() {
   }, [currentPage, searchQuery]);
 
   return (
-    <>
+    <Container>
       <SearchBar onSubmit={handleSubmit} />
 
       {isLoading && <Loader />}
@@ -53,7 +55,7 @@ function MoviesPage() {
         totalPages={totalPages}
         onPaginationBtn={setCurrentPage}
       />
-    </>
+    </Container>
   );
 }
 export default MoviesPage;

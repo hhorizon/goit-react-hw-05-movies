@@ -8,5 +8,10 @@ const ButtonStyled = styled.button`
   background-color: #78a5a373;
   text-decoration: none;
   cursor: default;
+
+  &:hover,
+  &:focus {
+    background-color: #78a5a3;
+  }
 `;
 export { ButtonStyled };

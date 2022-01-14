@@ -9,7 +9,13 @@ function MoviesList({ movies, isLoadingMoreBtn, onLoadMore }) {
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+            <Link
+              to={`/movies/${movie.id}`}
+              state={{
+                from: location,
+                label: location.pathname === "/" ? "to home" : "to movies",
+              }}
+            >
               <MoviesListItem movie={movie} />
             </Link>
           </li>

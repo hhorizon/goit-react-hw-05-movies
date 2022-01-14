@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import HomePage from "./views/HomePage";
 import MoviesPage from "./views/MoviesPage";
-import MovieDetailsPage from "./components/MovieDetailsPage/MovieDetailsPage";
+import MovieDetailsPage from "./views/MovieDetailsPage";
 
 function App() {
   return (
