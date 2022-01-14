@@ -17,7 +17,6 @@ const DescrWrapper = styled.div`
 const Title = styled.h2`
   font-size: 26px;
   margin-bottom: 40px;
-  color: #78a5a3;
 `;
 
 const Rating = styled.div`

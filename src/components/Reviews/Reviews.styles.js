@@ -42,6 +42,7 @@ const Paginate = styled(ReactPaginate).attrs({
   breakLinkClassName: "breakLink",
   nextClassName: "nextItem",
   nextLinkClassName: "nextLink",
+  disabledLinkClassName: "disabled",
 })`
   display: flex;
   justify-content: center;
@@ -71,6 +72,11 @@ const Paginate = styled(ReactPaginate).attrs({
 
   & .activeLink {
     background-color: #78a5a3;
+  }
+
+  & .disabled {
+    background-color: #444c5c;
+    color: #444c5c;
   }
 `;
 
