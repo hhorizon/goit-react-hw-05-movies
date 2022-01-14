@@ -1,4 +1,9 @@
 import { useState } from "react";
+import propTypes from "prop-types";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { BsSearch } from "react-icons/bs";
+import { Form, Label, Input, Button } from "./SearchBar.styles";
 
 function SearchBar({ onSubmit }) {
   const [inputValue, setInputValue] = useState("");
@@ -13,7 +18,7 @@ function SearchBar({ onSubmit }) {
     const searchQuery = inputValue.trim().toLowerCase();
 
     if (searchQuery === "") {
-      alert("Enter your query.");
+      toast.info("Enter your query.");
       return;
     }
 
@@ -22,13 +27,19 @@ function SearchBar({ onSubmit }) {
   };
 
   return (
-    <form onSubmit={handlerSubmit}>
-      <label>
-        <input value={inputValue} onChange={handleChangeInput} />
-        <button type="submit">Find</button>
-      </label>
-    </form>
+    <Form onSubmit={handlerSubmit}>
+      <Label>
+        <Input value={inputValue} onChange={handleChangeInput} />
+        <Button type="submit">
+          <BsSearch />
+        </Button>
+      </Label>
+    </Form>
   );
 }
+
+SearchBar.propTypes = {
+  onSubmit: propTypes.func,
+};
 
 export default SearchBar;

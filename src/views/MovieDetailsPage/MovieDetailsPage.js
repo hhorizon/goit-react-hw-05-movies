@@ -13,7 +13,7 @@ import Button from "../../components/Button";
 import MovieCard from "../../components/MovieCard";
 import Cast from "../../components/Cast";
 import Reviews from "../../components/Reviews";
-import { NavList, NavItem } from "./MovieDetailsPage.styles";
+import { NoMovieMess, NavList, NavItem } from "./MovieDetailsPage.styles";
 
 function MovieDetailsPage() {
   const navigate = useNavigate();
@@ -25,13 +25,22 @@ function MovieDetailsPage() {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetchApi.movieById(movieId).then(setMovie);
-    fetchApi.movieCredits(movieId).then((data) => {
-      setCredits(data.cast);
-    });
-    fetchApi.movieReviews(movieId).then((data) => {
-      setReviews(data.results);
-    });
+    fetchApi
+      .movieById(movieId)
+      .then(setMovie)
+      .catch((error) => console.log(error));
+    fetchApi
+      .movieCredits(movieId)
+      .then((data) => {
+        setCredits(data.cast);
+      })
+      .catch((error) => console.log(error));
+    fetchApi
+      .movieReviews(movieId)
+      .then((data) => {
+        setReviews(data.results);
+      })
+      .catch((error) => console.log(error));
   }, [movieId]);
 
   const onClickBack = () => {
@@ -48,7 +57,11 @@ function MovieDetailsPage() {
         Back {location?.state?.label ?? ""}
       </Button>
 
-      {movie && <MovieCard movie={movie} />}
+      {movie ? (
+        <MovieCard movie={movie} />
+      ) : (
+        <NoMovieMess>Something wrong! Try later...</NoMovieMess>
+      )}
 
       <NavList>
         <NavItem>
@@ -78,7 +91,7 @@ function MovieDetailsPage() {
       <Routes>
         <Route
           path="cast"
-          element={<Cast credits={credits} creditsPerPage={5} />}
+          element={<Cast credits={credits} creditsPerPage={7} />}
         />
 
         <Route

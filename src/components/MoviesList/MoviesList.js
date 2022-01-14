@@ -1,30 +1,19 @@
-import { Link, useLocation } from "react-router-dom";
-import MoviesListItem from "../MoviesListItem/MoviesListItem";
+import propTypes from "prop-types";
+import MoviesListItem from "../MoviesListItem";
+import { List } from "./MovieList.styles";
 
-function MoviesList({ movies, isLoadingMoreBtn, onLoadMore }) {
-  const location = useLocation();
-
+function MoviesList({ movies }) {
   return (
-    <>
-      <ul>
-        {movies.map((movie) => (
-          <li key={movie.id}>
-            <Link
-              to={`/movies/${movie.id}`}
-              state={{
-                from: location,
-                label: location.pathname === "/" ? "to home" : "to movies",
-              }}
-            >
-              <MoviesListItem movie={movie} />
-            </Link>
-          </li>
-        ))}
-      </ul>
-
-      {isLoadingMoreBtn && <button onClick={onLoadMore}>Load more</button>}
-    </>
+    <List>
+      {movies.map((movie) => (
+        <MoviesListItem key={movie.id} movie={movie} />
+      ))}
+    </List>
   );
 }
+
+MoviesList.propTypes = {
+  movies: propTypes.arrayOf(propTypes.object),
+};
 
 export default MoviesList;

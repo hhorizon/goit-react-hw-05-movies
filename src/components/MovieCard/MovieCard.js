@@ -1,3 +1,5 @@
+import propTypes from "prop-types";
+import fotFound from "../../images/not-found.png";
 import {
   CardWrapper,
   DescrWrapper,
@@ -23,10 +25,15 @@ function MovieCard({ movie }) {
 
   return (
     <CardWrapper>
-      <img
-        src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-        alt="{original_title}"
-      />
+      {poster_path ? (
+        <img
+          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          alt="{original_title}"
+          width={350}
+        />
+      ) : (
+        <img src={fotFound} alt="{original_title}" width={350} />
+      )}
 
       <DescrWrapper>
         <Title>{original_title}</Title>
@@ -56,5 +63,9 @@ function MovieCard({ movie }) {
     </CardWrapper>
   );
 }
+
+MovieCard.propTypes = {
+  movie: propTypes.object,
+};
 
 export default MovieCard;

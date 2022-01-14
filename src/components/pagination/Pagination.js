@@ -1,7 +1,7 @@
-import ReactPaginate from "react-paginate";
-import styled from "styled-components";
+import propTypes from "prop-types";
+import { Paginate } from "./Pagination.styles";
 
-function PaginatedItems({ totalPages, onPaginationBtn }) {
+function Pagination({ totalPages, onPaginationBtn }) {
   const handlePageClick = (event) => {
     onPaginationBtn(event.selected + 1);
   };
@@ -13,45 +13,18 @@ function PaginatedItems({ totalPages, onPaginationBtn }) {
         pageCount={totalPages}
         pageRangeDisplayed={3}
         marginPagesDisplayed={2}
-        previousLabel="< previous"
+        previousLabel="<"
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel=">"
         renderOnZeroPageCount={null}
       />
     </>
   );
 }
 
-export default PaginatedItems;
+Pagination.propTypes = {
+  totalPages: propTypes.number,
+  onPaginationBtn: propTypes.func,
+};
 
-const Paginate = styled(ReactPaginate).attrs({
-  previousClassName: "prevItem",
-  previousLinkClassName: "prevLink",
-  pageClassName: "item",
-  pageLinkClassName: "link",
-  activeClassName: "activeItem",
-  activeLinkClassName: "activeLink",
-  breakClassName: "breakItem",
-  breakLinkClassName: "breakLink",
-  nextClassName: "nextItem",
-  nextLinkClassName: "nextLink",
-})`
-  display: flex;
-  list-style-type: none;
-  background-color: antiquewhite;
-
-  & .prevItem {
-    margin-right: 15px;
-  }
-
-  & .item {
-    margin-right: 15px;
-  }
-
-  & .activeItem {
-  }
-
-  & .breakItem {
-    margin-right: 15px;
-  }
-`;
+export default Pagination;

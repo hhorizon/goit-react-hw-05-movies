@@ -6,15 +6,16 @@ const CardWrapper = styled.div`
 `;
 
 const DescrWrapper = styled.div`
-  margin-left: 30px;
+  margin-left: 40px;
   color: rgba(255, 255, 255, 0.8);
 
-  font-size: 20px;
+  font-size: 16px;
   letter-spacing: 0.04em;
   line-height: 1.5;
 `;
 
 const Title = styled.h2`
+  font-size: 26px;
   margin-bottom: 40px;
   color: #78a5a3;
 `;

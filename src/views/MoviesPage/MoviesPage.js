@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import * as fetchApi from "../../services/fetchApi";
 import Container from "../../components/Container";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import MoviesList from "../../components/MoviesList/MoviesList";
 import Loader from "../../components/Loader";
-
-import PaginatedItems from "../../components/Pagination/Pagination";
+import MoviesList from "../../components/MoviesList";
+import Pagination from "../../components/Pagination";
 
 function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -34,7 +35,7 @@ function MoviesPage() {
         setTotalPages(data.total_pages);
 
         if (data.results.length === 0) {
-          alert("По вашему запросу пусто");
+          toast.warn("По вашему запросу пусто");
         }
       })
       .catch((error) => alert(error))
@@ -51,10 +52,7 @@ function MoviesPage() {
 
       {movies.length > 0 && <MoviesList movies={movies} />}
 
-      <PaginatedItems
-        totalPages={totalPages}
-        onPaginationBtn={setCurrentPage}
-      />
+      <Pagination totalPages={totalPages} onPaginationBtn={setCurrentPage} />
     </Container>
   );
 }

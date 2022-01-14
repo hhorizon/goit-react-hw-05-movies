@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import propTypes from "prop-types";
 import {
   List,
   Item,
@@ -48,13 +49,18 @@ function Reviews({ reviews, creditsPerPage }) {
         pageCount={pageCount}
         pageRangeDisplayed={3}
         marginPagesDisplayed={2}
-        previousLabel="previous"
+        previousLabel="<"
         breakLabel="..."
-        nextLabel="next"
+        nextLabel=">"
         renderOnZeroPageCount={null}
       />
     </>
   );
 }
+
+Reviews.propTypes = {
+  reviews: propTypes.arrayOf(propTypes.object),
+  creditsPerPage: propTypes.number,
+};
 
 export default Reviews;

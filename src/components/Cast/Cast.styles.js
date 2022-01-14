@@ -4,17 +4,17 @@ import ReactPaginate from "react-paginate";
 const List = styled.ul`
   display: flex;
   padding: 25px;
-  height: 391px;
+  height: 280px;
 `;
 
 const Item = styled.li`
-  width: 210px;
-  font-size: 18px;
+  width: 150px;
+  font-size: 12px;
   letter-spacing: 0.04em;
   line-height: 1.5;
 
   &:not(:last-child) {
-    margin-right: 25px;
+    margin-right: 17px;
   }
 `;
 
@@ -24,13 +24,12 @@ const ActorName = styled.p`
 `;
 
 const ActorCharacter = styled.p`
-  font-size: 14px;
   color: rgba(255, 255, 255, 0.8);
 `;
 
 const NoCastMess = styled.p`
   padding: 25px;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   color: #78a5a3;
 `;
@@ -51,6 +50,7 @@ const Paginate = styled(ReactPaginate).attrs({
   justify-content: center;
   list-style-type: none;
   padding: 25px;
+  font-size: 14px;
   background-color: #444c5c;
   border-top: 1px solid #78a5a3;
 

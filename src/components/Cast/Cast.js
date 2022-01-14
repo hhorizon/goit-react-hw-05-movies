@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import propTypes from "prop-types";
 import {
   List,
   Item,
@@ -36,14 +37,14 @@ function Cast({ credits, creditsPerPage }) {
                   <img
                     src={`https://image.tmdb.org/t/p/w500${credit.profile_path}`}
                     alt={credit.name}
-                    width={210}
+                    width={150}
                   />
                 ) : (
                   <img
                     src={fotFound}
                     alt={credit.name}
-                    width={210}
-                    height={315}
+                    width={150}
+                    height={225}
                   />
                 )}
                 <ActorName>{credit.name}</ActorName>
@@ -61,13 +62,18 @@ function Cast({ credits, creditsPerPage }) {
         pageCount={pageCount}
         pageRangeDisplayed={3}
         marginPagesDisplayed={2}
-        previousLabel="previous"
+        previousLabel="<"
         breakLabel="..."
-        nextLabel="next"
+        nextLabel=">"
         renderOnZeroPageCount={null}
       />
     </>
   );
 }
+
+Cast.propTypes = {
+  credits: propTypes.arrayOf(propTypes.object),
+  creditsPerPage: propTypes.number,
+};
 
 export default Cast;

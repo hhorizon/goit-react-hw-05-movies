@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+const NoMovieMess = styled.p`
+  padding: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #78a5a3;
+`;
+
 const NavList = styled.ul`
   display: flex;
   justify-content: center;
@@ -33,4 +40,4 @@ const NavItem = styled.li`
   }
 `;
 
-export { NavList, NavItem };
+export { NoMovieMess, NavList, NavItem };

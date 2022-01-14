@@ -14,6 +14,8 @@ const GlobalStyle = createGlobalStyle`
   body{
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
+    font-size: 14px;
+    letter-spacing: 0.04em;
     background-color: #444c5ca1
   }
 `;

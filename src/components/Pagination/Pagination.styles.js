@@ -1,35 +1,5 @@
-import styled from "styled-components";
 import ReactPaginate from "react-paginate";
-
-const List = styled.ul`
-  padding: 25px;
-`;
-
-const Item = styled.li`
-  &:not(:last-child) {
-    padding-bottom: 5px;
-    margin-bottom: 25px;
-    border-bottom: 1px solid #78a5a3;
-  }
-`;
-
-const Name = styled.p`
-  font-size: 14px;
-  margin-bottom: 10px;
-  color: #78a5a3;
-`;
-
-const Content = styled.p`
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
-`;
-
-const NoReviewsMess = styled.p`
-  padding: 25px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #78a5a3;
-`;
+import styled from "styled-components";
 
 const Paginate = styled(ReactPaginate).attrs({
   previousClassName: "prevItem",
@@ -73,5 +43,4 @@ const Paginate = styled(ReactPaginate).attrs({
     background-color: #78a5a3;
   }
 `;
-
-export { List, Item, Name, Content, NoReviewsMess, Paginate };
+export { Paginate };

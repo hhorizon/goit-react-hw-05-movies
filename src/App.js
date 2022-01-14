@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Header from "./components/Header";
 import HomePage from "./views/HomePage";
 import MoviesPage from "./views/MoviesPage";
@@ -15,6 +16,8 @@ function App() {
         <Route path="/movies/:movieId/*" element={<MovieDetailsPage />}></Route>
         <Route path="*" element={<HomePage />} />
       </Routes>
+
+      <ToastContainer />
     </>
   );
 }

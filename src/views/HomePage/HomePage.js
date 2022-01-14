@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import * as fetchApi from "../../services/fetchApi";
-import MoviesList from "../../components/MoviesList/MoviesList";
+import Container from "../../components/Container";
+import MoviesList from "../../components/MoviesList";
 
 function HomePage() {
   const [popularMovies, setPopularMovies] = useState([]);
@@ -12,9 +13,9 @@ function HomePage() {
   }, []);
 
   return (
-    <>
+    <Container>
       <MoviesList movies={popularMovies} />
-    </>
+    </Container>
   );
 }
 
