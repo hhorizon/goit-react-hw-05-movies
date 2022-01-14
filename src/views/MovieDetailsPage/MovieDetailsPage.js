@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import {
   NavLink,
   useParams,
@@ -11,9 +11,15 @@ import * as fetchApi from "../../services/fetchApi";
 import Container from "../../components/Container";
 import Button from "../../components/Button";
 import MovieCard from "../../components/MovieCard";
-import Cast from "../../components/Cast";
-import Reviews from "../../components/Reviews";
+import Loader from "../../components/Loader";
 import { NoMovieMess, NavList, NavItem } from "./MovieDetailsPage.styles";
+
+const Cast = lazy(() =>
+  import("../../components/Cast" /* webpackChunkName: "cast-page" */)
+);
+const Reviews = lazy(() =>
+  import("../../components/Reviews" /* webpackChunkName: "reviews-page" */)
+);
 
 function MovieDetailsPage() {
   const navigate = useNavigate();
@@ -88,17 +94,19 @@ function MovieDetailsPage() {
         </NavItem>
       </NavList>
 
-      <Routes>
-        <Route
-          path="cast"
-          element={<Cast credits={credits} creditsPerPage={7} />}
-        />
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route
+            path="cast"
+            element={<Cast credits={credits} creditsPerPage={7} />}
+          />
 
-        <Route
-          path="reviews"
-          element={<Reviews reviews={reviews} creditsPerPage={3} />}
-        />
-      </Routes>
+          <Route
+            path="reviews"
+            element={<Reviews reviews={reviews} creditsPerPage={3} />}
+          />
+        </Routes>
+      </Suspense>
     </Container>
   );
 }
