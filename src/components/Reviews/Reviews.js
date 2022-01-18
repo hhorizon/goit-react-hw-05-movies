@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import propTypes from "prop-types";
+import fonFound from "../../images/not-found.png";
 import {
   List,
   Item,
+  Author,
+  Avatar,
   Name,
   Content,
   NoReviewsMess,
@@ -25,6 +28,18 @@ function Reviews({ reviews, creditsPerPage }) {
     setItemOffset(newOffset);
   };
 
+  const getCorrectSrc = (string) => {
+    if (string === null) {
+      return fonFound;
+    }
+
+    if (string.slice(1, 6) === "https") {
+      return string.slice(1);
+    }
+
+    return `https://image.tmdb.org/t/p/w500${string}`;
+  };
+
   return (
     <>
       <>
@@ -32,7 +47,15 @@ function Reviews({ reviews, creditsPerPage }) {
           <List>
             {currentReviews.map((review) => (
               <Item key={review.id}>
-                <Name>{review.author}</Name>
+                <Author>
+                  <Avatar
+                    src={getCorrectSrc(review.author_details.avatar_path)}
+                    alt="avatar"
+                    width={50}
+                    height={50}
+                  />
+                  <Name>{review.author}</Name>
+                </Author>
                 <Content>{review.content}</Content>
               </Item>
             ))}

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const CardWrapper = styled.div`
   display: flex;
-  padding: 25px;
+  padding: 25px 75px;
 `;
 
 const DescrWrapper = styled.div`
@@ -16,42 +16,32 @@ const DescrWrapper = styled.div`
 
 const Title = styled.h2`
   font-size: 26px;
-  margin-bottom: 40px;
-`;
-
-const Rating = styled.div`
-  margin-bottom: 20px;
-`;
-
-const Overview = styled.div`
-  margin-bottom: 20px;
-`;
-
-const Date = styled.div`
   margin-bottom: 20px;
 `;
 
 const Genres = styled.div`
-  margin-bottom: 20px;
+  display: inline;
+  padding: 3px 10px;
+  border-radius: 4px;
+  background-color: #78a5a373;
 
   & span:not(:last-child)::after {
     content: ", ";
   }
 `;
 
-const Gen = styled.p`
-  display: inline;
-  font-weight: 600;
-  color: #78a5a3;
+const Rating = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  & svg {
+    color: rgb(255 215 0 / 90%);
+    margin-right: 5px;
+  }
 `;
 
-export {
-  CardWrapper,
-  DescrWrapper,
-  Title,
-  Rating,
-  Overview,
-  Date,
-  Genres,
-  Gen,
-};
+const Overview = styled.div``;
+
+export { CardWrapper, DescrWrapper, Title, Genres, Rating, Overview };

@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body{
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-size: 14px;
     letter-spacing: 0.04em;

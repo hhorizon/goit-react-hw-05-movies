@@ -7,19 +7,30 @@ const List = styled.ul`
 
 const Item = styled.li`
   &:not(:last-child) {
-    padding-bottom: 5px;
+    padding-bottom: 25px;
     margin-bottom: 25px;
     border-bottom: 1px solid #78a5a3;
   }
 `;
 
+const Author = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+`;
+
+const Avatar = styled.img`
+  border-radius: 50%;
+`;
+
 const Name = styled.p`
-  font-size: 14px;
-  margin-bottom: 10px;
+  margin-left: 15px;
+  font-size: 15px;
   color: #78a5a3;
 `;
 
 const Content = styled.p`
+  padding-left: 25px;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.7);
 `;
@@ -80,4 +91,4 @@ const Paginate = styled(ReactPaginate).attrs({
   }
 `;
 
-export { List, Item, Name, Content, NoReviewsMess, Paginate };
+export { List, Item, Author, Avatar, Name, Content, NoReviewsMess, Paginate };

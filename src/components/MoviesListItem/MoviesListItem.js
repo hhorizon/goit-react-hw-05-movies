@@ -1,12 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
 import propTypes from "prop-types";
+import { AiFillStar } from "react-icons/ai";
 import fotFound from "../../images/not-found.png";
-import { Item, Image, Title } from "./MoviesListItem.styles";
+import { Item, Image, Title, Rating } from "./MoviesListItem.styles";
 
 function MoviesListItem({ movie }) {
   const location = useLocation();
 
-  const { title, name, poster_path, release_date } = movie;
+  const { title, name, poster_path, release_date, vote_average } = movie;
 
   const releaseYear = () => {
     if (release_date) {
@@ -37,6 +38,10 @@ function MoviesListItem({ movie }) {
           {title ?? name}
           <span> {releaseYear()}</span>
         </Title>
+        <Rating>
+          <AiFillStar />
+          {vote_average}
+        </Rating>
       </Link>
     </Item>
   );

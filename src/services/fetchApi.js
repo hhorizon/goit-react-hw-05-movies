@@ -10,7 +10,7 @@ async function fetchMovies(url) {
 }
 
 export function popularMovies() {
-  return fetchMovies("trending/all/day?");
+  return fetchMovies("trending/movie/week?");
 }
 
 export function searchMovies(searchQuery, currentPage) {

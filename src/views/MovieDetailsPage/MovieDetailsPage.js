@@ -12,7 +12,7 @@ import Container from "../../components/Container";
 import Button from "../../components/Button";
 import MovieCard from "../../components/MovieCard";
 import Loader from "../../components/Loader";
-import { NoMovieMess, NavList, NavItem } from "./MovieDetailsPage.styles";
+import { NavList, NavItem } from "./MovieDetailsPage.styles";
 
 const Cast = lazy(() =>
   import("../../components/Cast" /* webpackChunkName: "cast-page" */)
@@ -58,16 +58,12 @@ function MovieDetailsPage() {
       <Button
         type="button"
         onClick={onClickBack}
-        style={{ margin: "25px 0 0 25px" }}
+        style={{ margin: "25px 0 0 100px" }}
       >
         Back {location?.state?.label ?? ""}
       </Button>
 
-      {movie ? (
-        <MovieCard movie={movie} />
-      ) : (
-        <NoMovieMess>Something wrong! Try later...</NoMovieMess>
-      )}
+      {movie ? <MovieCard movie={movie} /> : <Loader />}
 
       <NavList>
         <NavItem>

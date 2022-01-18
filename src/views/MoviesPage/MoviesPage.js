@@ -37,7 +37,8 @@ function MoviesPage() {
       setMovies([]);
       setTotalPages(0);
     }
-  }, [searchParams]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (searchQuery === "") {
@@ -49,14 +50,13 @@ function MoviesPage() {
     fetchApi
       .searchMovies(searchQuery, currentPage)
       .then((data) => {
+        if (data.results.length === 0) {
+          return toast.warn("No results were found for your search.");
+        }
         setMovies(data.results);
         setTotalPages(data.total_pages);
-
-        if (data.results.length === 0) {
-          toast.warn("По вашему запросу пусто");
-        }
       })
-      .catch((error) => alert(error))
+      .catch((error) => toast.error(error))
       .finally(() => setIsloading(false));
   }, [currentPage, searchQuery]);
 
